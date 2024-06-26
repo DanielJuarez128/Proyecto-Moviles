@@ -50,6 +50,8 @@ import com.delgadojuarez.ucamarket.ui.screens.Wishlist
 
 @Composable
 fun ProductCard(
+    viewModel: MainViewModel,
+    productId: String,
     productName: String,
     entrepreneurshipName: String,
     productPrice: String,
@@ -146,7 +148,14 @@ fun ProductCard(
 
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            DeleteProductButton()
+                            DeleteProductButton(
+                                viewModel = viewModel,
+                                productId = productId,
+                                onDeleteConfirmed = {
+                                    // Lógica adicional después de eliminar el producto (si es necesaria)
+                                    viewModel.deleteProduct(productId)
+                                }
+                            )
 
                         }
 
